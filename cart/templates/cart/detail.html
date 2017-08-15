@@ -61,7 +61,7 @@
         </tbody>
     </table>
     <a class="btn btn-info" href=" {% url "shop:product_list" %}"> Kontynuuj zakupy</a>
-    <a class="btn btn-success" href="#">Do Kasy</a>
+    <a class="btn btn-success {%if cart|length < 1 %}disabled{%endif%}" href="{% url "orders:order_create" %}">Do Kasy</a>
 </div>
 {% endblock %}
 </body>

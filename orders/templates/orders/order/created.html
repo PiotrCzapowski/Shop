@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+
+{% block titel%}
+Kasa
+{%endblock%}
+
+{%block content%}
+<div class="container">
+	<h1>Dziękujemy!</h1>
+	
+	<div class="jumbotron">
+		<p>Twoje zamówienie zostało złożone do realizacji.</p>
+	</div>
+	<a class="btn btn-success" href="{% url "shop:product_list" %}">Wróc do sklepu</a>
+</div>
+{%endblock%}
