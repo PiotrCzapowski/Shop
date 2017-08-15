@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title> {% block title %} Koszyk {% endblock %} </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% block content %}
+    <div class="container">
+    <div class="page-header">
+        <h1>Produkty w twoim koszyku</h1>
+    </div>
+    <table class="table table-borderd table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Obraz</th>
+                <th>Produkt</th>
+                <th>Ilość</th>
+                <th>Usuń</th>
+                <th>Cena jednostkowa</th>
+                <th>Kwota</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart%}
+                {% with product=item.product %}
+                    <tr>
+                        <td>
+                            <a href="{{product.get_absoulte_url}}">
+                                <img class="img-responsive img-thumbnail" style="max-width:300px; max-height: 200px "  src="{% if product.image %}{{product.image.url}}{%else%}https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png{%endif%}">
+                            </a>
+                        </td>
+                        <td>{{product.name}}</td>
+                        <td>
+                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                {{item.update_quantity_form.quantity}}
+                                {{item.update_quantity_form.update}}
+                                <input type="submit" value="zmień">
+                                {% csrf_token %}
+                                
+                            </form>
+                        </td>
+                        <td><a href="{% url "cart:cart_remove" product.id %}">
+                                <span style="color: red" class="glyphicon glyphicon-remove"></span>    
+                            </a>
+                        </td>
+                        <td>{{item.price}} zł</td>
+                        <td>{{item.total_price}} zł</td>
+                    </tr>
+                {% endwith%}
+            {%endfor%}
+            <tr>
+                <td>Wartość całkowita</td>
+                <td colspan="4"></td>
+                <td>{{cart.get_total_price}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-info" href=" {% url "shop:product_list" %}"> Kontynuuj zakupy</a>
+    <a class="btn btn-success" href="#">Do Kasy</a>
+</div>
+{% endblock %}
+</body>

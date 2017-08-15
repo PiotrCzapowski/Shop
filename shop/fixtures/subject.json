@@ -1,0 +1,66 @@
+[
+{
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+    "name": "Plecaki",
+    "slug": "plecaki"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 2,
+  "fields": {
+    "name": "Nerki",
+    "slug": "nerki"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "plecak 1",
+    "slug": "plecak-1",
+    "image": "",
+    "description": "Jeden z najlepszych plecak\u00f3w dost\u0119pnych na rynku!",
+    "price": "49.99",
+    "stock": 10,
+    "available": true,
+    "created": "2017-08-09T16:08:49.006Z",
+    "updated": "2017-08-09T16:08:49.007Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "plecak 2",
+    "slug": "plecak-2",
+    "image": "products/2017/08/09/d76dbfbfbaba70d2e526ce9b1daf5ab4--astronaut-drawing-astronaut-art.jpg",
+    "description": "Plecak o wyj\u0105tkowych kolorach, z niezwyk\u0142ego materia\u0142u.",
+    "price": "79.99",
+    "stock": 4,
+    "available": true,
+    "created": "2017-08-09T16:10:22.472Z",
+    "updated": "2017-08-09T16:10:26.723Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 3,
+  "fields": {
+    "category": 2,
+    "name": "nerka 1",
+    "slug": "nerka-1",
+    "image": "products/2017/08/09/d76dbfbfbaba70d2e526ce9b1daf5ab4--astronaut-drawing-astronaut-art_RnnDdIz.jpg",
+    "description": "Nerka kt\u00f3r\u0105 mo\u017cesz nosi\u0107 na biodrze!",
+    "price": "39.99",
+    "stock": 13,
+    "available": true,
+    "created": "2017-08-09T16:11:22.800Z",
+    "updated": "2017-08-09T16:11:22.800Z"
+  }
+}
+]

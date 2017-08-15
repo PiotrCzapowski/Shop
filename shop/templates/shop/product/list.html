@@ -1,0 +1,29 @@
+{% extends 'shop/base.html'%}
+
+{% block title %}
+    {% if category %}
+        {{category.name}}
+    {% else%}
+        Produkty
+    {%endif%}
+{%endblock%}
+
+{% block content%}
+    <div class ="container">
+    {% for product in products %}
+        {% if forloop.counter0|divisibleby:3 or forloop.first %}
+        <div class="row">
+        {% endif %}
+        <div class = "col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="{{product.get_absolute_url}}">
+            <img class="img-responsive" src="{% if product.image %}{{product.image.url}}{%else%}https://pbs.twimg.com/profile_images/473506797462896640/_M0JJ0v8.png{%endif%}">
+            {{product.name}}
+        </a>
+        </div>
+        {% if forloop.counter|divisibleby:3 or forloop.last %}
+        </div>
+        {%endif%}
+        {%empty%}
+        <div class="jumbotron"><p>nie ma produktów w tej kategorii</p></div>
+    {% endfor%}
+{%endblock%}
